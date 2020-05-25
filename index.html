@@ -8,6 +8,7 @@
   </head>
   <body>
     <div class="sequencer">
+      <!-- KICKS SAMPLES -->
       <div class="kick-sample">
         <div class="controls">
           <h1>Kick</h1>
@@ -68,6 +69,8 @@
           <div class="pad kick-pad B7"></div>
         </div>
       </div>
+
+      <!-- CLAPS SAMPLES -->
       <div class="clap-sample">
         <div class="controls">
           <h1>clap</h1>
@@ -92,6 +95,34 @@
           <div class="pad clap-pad B5"></div>
           <div class="pad clap-pad B6"></div>
           <div class="pad clap-pad B7"></div>
+        </div>
+      </div>
+
+      <!-- CRASHES SAMPLES -->
+      <div class="crash-sample">
+        <div class="controls">
+          <h1>crash</h1>
+          <button data-sample="0" class="mute crash-volume">
+            <i class="fas fa-volume-mute"></i>
+          </button>
+          <select name="crash-select" id="crash-select">
+            <option value="./allSounds/crash-808.wav">808 crash</option>
+            <option value="./allSounds/crash-acoustic.wav"
+              >Acoustic crash</option
+            >
+            <option value="./allSounds/crash-noise.wav">Noise crash</option>
+            <option value="./allSounds/crash-tape.wav">Tape crash</option>
+          </select>
+        </div>
+        <div class="crash">
+          <div class="pad crash-pad B0"></div>
+          <div class="pad crash-pad B1"></div>
+          <div class="pad crash-pad B2"></div>
+          <div class="pad crash-pad B3"></div>
+          <div class="pad crash-pad B4"></div>
+          <div class="pad crash-pad B5"></div>
+          <div class="pad crash-pad B6"></div>
+          <div class="pad crash-pad B7"></div>
         </div>
       </div>
     </div>
