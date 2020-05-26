@@ -14,6 +14,9 @@ class Drumkit {
     this.index = 0;
     this.bpm = 126;
   }
+  activePad() {
+    this.classList.toggle("active");
+  }
   repeat() {
     let step = this.index % 8;
     const activeBars = document.querySelectorAll(`.B${step}`);
@@ -28,5 +31,7 @@ class Drumkit {
   }
 }
 const drumKit = new Drumkit();
-
+drumKit.pads.forEach((pad) => {
+  pad.addEventListener("click", drumKit.activePad);
+});
 drumKit.playBtn.addEventListener("click", () => drumKit.start());
