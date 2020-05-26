@@ -11,6 +11,7 @@ class Drumkit {
     this.tomAudio = document.querySelector(".tom-sound");
     this.otherAudio = document.querySelector(".other-sound");
     this.index = 0;
+    this.bpm = 150;
   }
   repeat() {
     let step = this.index % 8;
@@ -19,6 +20,7 @@ class Drumkit {
     console.log(activeBars);
   }
   start() {
+    const interval = (60 / this.bpm) * 1000;
     setInterval(() => {
       this.repeat();
     }, 1000);
