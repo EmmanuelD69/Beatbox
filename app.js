@@ -13,6 +13,7 @@ class Drumkit {
     this.otherAudio = document.querySelector(".other-sound");
     this.index = 0;
     this.bpm = 126;
+    this.isPlaying = null;
   }
   activePad() {
     this.classList.toggle("active");
@@ -66,11 +67,37 @@ class Drumkit {
     });
     this.index++;
   }
+
+  /* fonction lancée à chaque "clic" sur le bouton "PLAY" */
   start() {
+    /* réglage du Tempo */
     const interval = (60 / this.bpm) * 1000;
-    setInterval(() => {
-      this.repeat();
-    }, interval);
+    /* Si "this.isPlaying" = null */
+    if (this.isPlaying == null) {
+      /* change le text du Btn avec "STOP" */
+      this.playBtn.innerText = "STOP";
+      /* ajoute la classe "active" au bouton */
+      this.playBtn.classList.add("active");
+      /* donne une valeur à "this.isPlaying" */
+      this.isPlaying = setInterval(
+        () => {
+          /* lance la fonction "repeat()" */
+          this.repeat();
+        },
+        /* relance la fonction repeat() tous les "interval" millisecondes */
+        interval
+      );
+    } else {
+      /* sinon */
+      /* change le text du Btn par "PLAY" */
+      this.playBtn.innerText = "PLAY";
+      /* efface la classe "active" du bouton */
+      this.playBtn.classList.remove("active");
+      /* efface la valeur de "this.isPlaying" */
+      clearInterval(this.isPlaying);
+      /* attribut la valeur "null" à (this.isPlaying) */
+      this.isPlaying = null;
+    }
   }
 }
 
@@ -83,4 +110,7 @@ drumKit.pads.forEach((pad) => {
   });
 });
 
-drumKit.playBtn.addEventListener("click", () => drumKit.start());
+drumKit.playBtn.addEventListener("click", function () {
+  // drumKit.updateBtn();
+  drumKit.start();
+});
