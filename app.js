@@ -27,30 +27,39 @@ class Drumkit {
       if (bar.classList.contains("active")) {
         /* Check each audio */
         if (bar.classList.contains("kick-pad")) {
+          this.kickAudio.currentTime = 0;
           this.kickAudio.play();
         }
         if (bar.classList.contains("clap-pad")) {
+          this.clapAudio.currentTime = 0;
           this.clapAudio.play();
         }
         if (bar.classList.contains("crash-pad")) {
+          this.crashAudio.currentTime = 0;
           this.crashAudio.play();
         }
         if (bar.classList.contains("hihat-pad")) {
+          this.hihatAudio.currentTime = 0;
           this.hihatAudio.play();
         }
         if (bar.classList.contains("openhat-pad")) {
+          this.openhatAudio.currentTime = 0;
           this.openhatAudio.play();
         }
         if (bar.classList.contains("perc-pad")) {
+          this.percAudio.currentTime = 0;
           this.percAudio.play();
         }
         if (bar.classList.contains("snare-pad")) {
+          this.snareAudio.currentTime = 0;
           this.snareAudio.play();
         }
         if (bar.classList.contains("tom-pad")) {
+          this.tomAudio.currentTime = 0;
           this.tomAudio.play();
         }
         if (bar.classList.contains("other-pad")) {
+          this.otherAudio.currentTime = 0;
           this.otherAudio.play();
         }
       }
