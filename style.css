@@ -185,3 +185,13 @@ select {
   width: 25rem;
   background: whitesmoke;
 }
+
+/* ANIMATIONS */
+@keyframes playTrack {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.2);
+  }
+}

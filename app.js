@@ -20,8 +20,12 @@ class Drumkit {
   repeat() {
     let step = this.index % 8;
     const activeBars = document.querySelectorAll(`.B${step}`);
+    /* Loop over on the pads */
+    activeBars.forEach((bar) => {
+      bar.style.animation = `playTrack 0.35s alternate ease-in-out 2`;
+    });
     this.index++;
-    console.log(activeBars);
+    console.log(step);
   }
   start() {
     const interval = (60 / this.bpm) * 1000;
@@ -31,7 +35,12 @@ class Drumkit {
   }
 }
 const drumKit = new Drumkit();
+
 drumKit.pads.forEach((pad) => {
   pad.addEventListener("click", drumKit.activePad);
+  pad.addEventListener("animationend", function () {
+    this.style.animation = "";
+  });
 });
+
 drumKit.playBtn.addEventListener("click", () => drumKit.start());
