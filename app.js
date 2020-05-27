@@ -23,9 +23,39 @@ class Drumkit {
     /* Loop over on the pads */
     activeBars.forEach((bar) => {
       bar.style.animation = `playTrack 0.35s alternate ease-in-out 2`;
+      /* Check if pads are active */
+      if (bar.classList.contains("active")) {
+        /* Check each audio */
+        if (bar.classList.contains("kick-pad")) {
+          this.kickAudio.play();
+        }
+        if (bar.classList.contains("clap-pad")) {
+          this.clapAudio.play();
+        }
+        if (bar.classList.contains("crash-pad")) {
+          this.crashAudio.play();
+        }
+        if (bar.classList.contains("hihat-pad")) {
+          this.hihatAudio.play();
+        }
+        if (bar.classList.contains("openhat-pad")) {
+          this.openhatAudio.play();
+        }
+        if (bar.classList.contains("perc-pad")) {
+          this.percAudio.play();
+        }
+        if (bar.classList.contains("snare-pad")) {
+          this.snareAudio.play();
+        }
+        if (bar.classList.contains("tom-pad")) {
+          this.tomAudio.play();
+        }
+        if (bar.classList.contains("other-pad")) {
+          this.otherAudio.play();
+        }
+      }
     });
     this.index++;
-    console.log(step);
   }
   start() {
     const interval = (60 / this.bpm) * 1000;
@@ -34,6 +64,7 @@ class Drumkit {
     }, interval);
   }
 }
+
 const drumKit = new Drumkit();
 
 drumKit.pads.forEach((pad) => {
