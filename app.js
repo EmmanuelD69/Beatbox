@@ -4,6 +4,7 @@ class Drumkit {
     this.selects = document.querySelectorAll("select");
     this.playBtn = document.querySelector(".play");
     this.muteBtns = document.querySelectorAll(".mute");
+    this.tempoSlider = document.querySelector(".tempo-slider");
     this.currentKick = "./allSounds/kick-808.wav";
     this.currentClap = "./allSounds/clap-808.wav";
     this.currentCrash = "./allSounds/crash-808.wav";
@@ -145,6 +146,22 @@ class Drumkit {
     }
   }
 
+  changeTempo(e) {
+    const tempoText = document.querySelector(".tempo-nr");
+
+    tempoText.innerText = e.target.value;
+  }
+
+  updateInterval(e) {
+    this.bpm = e.target.value;
+    clearInterval(this.isPlaying);
+    this.isPlaying = null;
+    const playBtn = document.querySelector(".play");
+    if (playBtn.classList.contains("active")) {
+      this.start();
+    }
+  }
+
   mute(e) {
     const muteIndex = e.target.getAttribute("data-sample");
     e.target.classList.toggle("active");
@@ -237,4 +254,12 @@ drumKit.muteBtns.forEach((btn) => {
   btn.addEventListener("click", function (e) {
     drumKit.mute(e);
   });
+});
+
+drumKit.tempoSlider.addEventListener("input", function (e) {
+  drumKit.changeTempo(e);
+});
+
+drumKit.tempoSlider.addEventListener("change", function (e) {
+  drumKit.updateInterval(e);
 });
