@@ -102,6 +102,10 @@ svg {
   background: rgb(129, 219, 129);
 }
 
+.mute.active {
+  background: rgb(187, 52, 52);
+}
+
 .sequencer {
   display: flex;
   justify-content: center;
