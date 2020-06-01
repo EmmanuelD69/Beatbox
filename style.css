@@ -1,4 +1,5 @@
-/* basic reset */
+/*** PARAMETRAGES GLOBAL DU FICHIER CSS ***/
+/* basic reset du comportement par défaut */
 * {
   padding: 0;
   margin: 0;
@@ -20,6 +21,8 @@ svg {
   pointer-events: none;
 }
 
+/*** TITRE APPLICATION WEB ***/
+/* Styling du Titre */
 .title {
   font-size: 3rem;
   background: grey;
@@ -32,6 +35,62 @@ svg {
   align-items: center;
 }
 
+/*** CONTENU DE L'APPLICATION WEB ***/
+/* Style global de l'appli web */
+.sequencer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 90vh;
+}
+
+/* Stylisme du Titre de chaque Samples */
+.sequencer h1 {
+  display: flex;
+  justify-content: flex-start;
+  background: rgb(82, 81, 81);
+  color: rgb(255, 255, 255);
+  padding: 1rem;
+  align-items: center;
+  width: 15rem;
+}
+
+/* Stylisme de l'ensemble des éléments formant la partie "controls" */
+.controls {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex: 1;
+  margin: 0rem 2rem;
+}
+
+/* Stylisme boutons MUTE */
+.controls button {
+  padding: 1rem;
+  border: none;
+  background: gray;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: all 0.7s ease;
+}
+
+/* Stylisme bouton MUTE en mode ACTIF */
+.mute.active {
+  background: rgb(187, 52, 52);
+}
+
+/* Stylisme de la partie SELECT permettant de choisir un sample */
+select {
+  padding: 1rem;
+  font-size: 2rem;
+  width: 25rem;
+  background: whitesmoke;
+}
+
+/*** PADS ***/
+/* Stylisme global des pads */
 .kick-pad,
 .clap-pad,
 .crash-pad,
@@ -47,6 +106,7 @@ svg {
   cursor: pointer;
 }
 
+/* Stylisme de la couleur de fond des pads avec ou sans classe "active" */
 .kick-pad {
   background: rgb(158, 158, 197);
 }
@@ -102,62 +162,14 @@ svg {
   background: rgb(129, 219, 129);
 }
 
-.mute.active {
-  background: rgb(187, 52, 52);
-}
-
-.tempo {
-  margin: 3rem;
-  width: 30%;
-}
-
-.tempo p {
-  font-size: 1.5rem;
-  margin: 2rem;
-  text-align: center;
-}
-
-.tempo-slider {
-  padding: 0.2rem;
-  -webkit-appearance: none;
-  margin: 1rem 0rem;
-  width: 100%;
-  position: relative;
-  background: grey;
-  cursor: pointer;
-  border-radius: 1rem;
-}
-
-.sequencer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  min-height: 90vh;
-}
-
-.controls {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex: 1;
-  margin: 0rem 2rem;
-}
-
-.controls button {
-  padding: 1rem;
-  border: none;
-  background: gray;
-  color: white;
-  font-size: 2rem;
-  cursor: pointer;
-  transition: all 0.7s ease;
-}
-
+/* Animation des pads lancé par l'intermédiaire d'une transition */
 .pad {
   transition: all 0.7s ease;
 }
+/***********************************************/
 
+/*** LIGNES DE SAMPLES ***/
+/* Stylisme des différentes lignes de samples via Flexbox */
 .kick-sample,
 .clap-sample,
 .crash-sample,
@@ -184,7 +196,9 @@ svg {
 .other {
   display: flex;
 }
+/********************************/
 
+/* Stylisme bouton PLAY/STOP */
 .play {
   padding: 1rem 2rem;
   font-size: 2rem;
@@ -195,24 +209,33 @@ svg {
   margin-top: 3rem;
 }
 
-.sequencer h1 {
-  display: flex;
-  justify-content: flex-start;
-  background: rgb(82, 81, 81);
-  color: rgb(255, 255, 255);
-  padding: 1rem;
-  align-items: center;
-  width: 15rem;
+/*** stylisme de la partie tempo ***/
+.tempo {
+  margin: 3rem;
+  width: 30%;
 }
 
-select {
-  padding: 1rem;
-  font-size: 2rem;
-  width: 25rem;
-  background: whitesmoke;
+/* affichage du tempo */
+.tempo p {
+  font-size: 1.5rem;
+  margin: 2rem;
+  text-align: center;
 }
 
-/* ANIMATIONS */
+/* Barre du slider tempo */
+.tempo-slider {
+  padding: 0.2rem;
+  -webkit-appearance: none;
+  margin: 1rem 0rem;
+  width: 100%;
+  position: relative;
+  background: grey;
+  cursor: pointer;
+  border-radius: 1rem;
+}
+/************************************************/
+
+/*** ANIMATION DES PADS LORSQUE "PLAY" EST ACTIF ***/
 @keyframes playTrack {
   from {
     transform: scale(1);
