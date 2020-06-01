@@ -1,4 +1,6 @@
+/*** DECLARATION DE LA CLASSE DRUMKIT ***/
 class Drumkit {
+  /* DECLARATION DE LA FONCTION CONSTRUCTOR QUI VA CREER UN OBJET DRUMKIT */
   constructor() {
     this.pads = document.querySelectorAll(".pad");
     this.selects = document.querySelectorAll("select");
@@ -24,12 +26,16 @@ class Drumkit {
     this.tomAudio = document.querySelector(".tom-sound");
     this.otherAudio = document.querySelector(".other-sound");
     this.index = 0;
-    this.bpm = 126;
+    this.bpm = 130;
     this.isPlaying = null;
   }
+
+  /* METHODE PERMETTANT L'AJOUT OU LE RETRAIT DE LA CLASSE CSS "ACTIVE" */
   activePad() {
     this.classList.toggle("active");
   }
+
+  /* METHODE PERMETTANT LA REPETITION EN BOUCLE DE L'ANIMATION DES PADS ET DE LA LECTURE DES LIGNES DE SAMPLES */
   repeat() {
     let step = this.index % 8;
     const activeBars = document.querySelectorAll(`.B${step}`);
@@ -80,7 +86,7 @@ class Drumkit {
     this.index++;
   }
 
-  /* fonction lancée à chaque "clic" sur le bouton "PLAY" */
+  /* Méthode lancée à chaque "clic" sur le bouton "PLAY" permettant le lancement de la méthode Repeat ou son Arrêt */
   start() {
     /* réglage du Tempo */
     const interval = (60 / this.bpm) * 1000;
@@ -112,6 +118,7 @@ class Drumkit {
     }
   }
 
+  /* Méthode permettant de choisir et valider le choix d'un sample dans la liste contenue dans chaque "SELECT" */
   changeSample(e) {
     const selectionName = e.target.name;
     const selectionValue = e.target.value;
@@ -146,12 +153,14 @@ class Drumkit {
     }
   }
 
+  /* Méthode permettant de mettre à jour l'affichage du tempo en fonction de la barre de slide */
   changeTempo(e) {
     const tempoText = document.querySelector(".tempo-nr");
-
     tempoText.innerText = e.target.value;
+    console.log(tempoText.innerText);
   }
 
+  /* Méthode permettant de mettre à jour dans l'objet Drumkit la propriété "Bpm" */
   updateInterval(e) {
     this.bpm = e.target.value;
     clearInterval(this.isPlaying);
@@ -162,6 +171,7 @@ class Drumkit {
     }
   }
 
+  /* Méthode permettant d'activer ou désactiver le bouton "MUTE" */
   mute(e) {
     const muteIndex = e.target.getAttribute("data-sample");
     e.target.classList.toggle("active");
@@ -232,6 +242,7 @@ class Drumkit {
 const drumKit = new Drumkit();
 
 /* EVENT LISTENERS */
+/* EventListener qui s'active lors d'un click sur un pad */
 drumKit.pads.forEach((pad) => {
   pad.addEventListener("click", drumKit.activePad);
   pad.addEventListener("animationend", function () {
@@ -239,27 +250,31 @@ drumKit.pads.forEach((pad) => {
   });
 });
 
+/* EventListener qui s'active lors d'un click sur le bouton "PLAY" */
 drumKit.playBtn.addEventListener("click", function () {
-  // drumKit.updateBtn();
   drumKit.start();
 });
 
+/* EventListener qui s'active lors du changement de valeur d'un "SELECT" */
 drumKit.selects.forEach((select) => {
   select.addEventListener("change", function (e) {
     drumKit.changeSample(e);
   });
 });
 
+/* EventListener qui s'active lors d'un click sur un bouton "MUTE" */
 drumKit.muteBtns.forEach((btn) => {
   btn.addEventListener("click", function (e) {
     drumKit.mute(e);
   });
 });
 
+/* EventListener positionné sur le "tempoSlider" qui s'active lors du changement de valeur de "INPUT" */
 drumKit.tempoSlider.addEventListener("input", function (e) {
   drumKit.changeTempo(e);
 });
 
+/* EventListener positionné sur le "tempoSlider" qui s'active lors du changement de position du Slider */
 drumKit.tempoSlider.addEventListener("change", function (e) {
   drumKit.updateInterval(e);
 });
